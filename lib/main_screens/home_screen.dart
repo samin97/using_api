@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
             MaterialPageRoute(builder: (_) => const Login());
             Navigator.pushReplacement(context, newRoute);
           },
-          child: Text("homepage")),
+          child: Text("Login screen")),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Route newRoute =

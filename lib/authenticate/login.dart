@@ -84,6 +84,9 @@ class _LoginState extends State<Login> {
                     formValidation();
                   },
                   child: Text("Sumbit")),
+
+
+              // this is to directly access homepage as i was looking to complete te cart
               ElevatedButton(
                   onPressed: () {
                     Route newRoute =
