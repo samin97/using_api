@@ -1,12 +1,10 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:login_api/main_screens/home_screen.dart';
-
 import '../global/error_dialog.dart';
+import '../global/global text.dart';
 import '../models/login_model.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -22,6 +20,7 @@ class _LoginState extends State<Login> {
   formValidation() {
     if (usernameController.text.isNotEmpty &&
         passwordController.text.isNotEmpty) {
+
       loginNow();
     } else {
       showDialog(
@@ -35,22 +34,34 @@ class _LoginState extends State<Login> {
   }
 
   Future loginNow() async {
-    LoginModel user = LoginModel(email: '', password: '');
+    LoginModel user = LoginModel(email: 'red', password: 'blue');
     setState(() {
-      user.email = usernameController.text.trim();
-      String base64password = passwordController.text.trim();
+      user.email = usernameController.text;
+      String base64password = passwordController.text;
       Codec<String, String> stringToBase64 = utf8.fuse(base64);
       String encoded = stringToBase64.encode(base64password);
       user.password = encoded;
     });
-
     var response = await http.post(
         Uri.parse("http://103.69.126.198:8080/Api/Token/Create"),
-        body: user);
-    print(user);
+        headers: <String, String>{'Content-Type': 'application/json; charset=UTF-8'},
+        body: jsonEncode(user));
+
     if (response.statusCode == 200) {
-      var s = json.decode(response.body);
-      print(s);
+      var s =response.body.toString();
+      await sharedPreferences?.setString("token", s);
+      Route newRoute =
+      MaterialPageRoute(builder: (_) => const HomeScreen());
+      Navigator.pushReplacement(context, newRoute);
+    }
+    else{
+      showDialog(
+          context: context,
+          builder: (c) {
+            return const ErrorDialog(
+              message: "Login Failed",
+            );
+          });
     }
   }
 
@@ -84,16 +95,6 @@ class _LoginState extends State<Login> {
                     formValidation();
                   },
                   child: Text("Sumbit")),
-
-
-              // this is to directly access homepage as i was looking to complete te cart
-              ElevatedButton(
-                  onPressed: () {
-                    Route newRoute =
-                        MaterialPageRoute(builder: (_) => const HomeScreen());
-                    Navigator.pushReplacement(context, newRoute);
-                  },
-                  child: Text("homepage"))
             ],
           ),
         ),

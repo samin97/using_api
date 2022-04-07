@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_api/authenticate/login.dart';
 import 'package:login_api/main_screens/home_screen.dart';
 
 void main() {
@@ -59,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      home: const Login(),
     );
 
   }

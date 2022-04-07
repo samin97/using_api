@@ -25,10 +25,10 @@ List<Product> demoProducts = [
   Product(
     id: 1,
     images: [
-      "assets/images/book1.png",
-      "assets/images/book5.png",
-      "assets/images/book2.png",
-      "assets/images/book3.png",
+      "https://www.seekpng.com/png/full/174-1747996_the-lord-of-the-rings-lord-of-the.png",
+      "https://www.seekpng.com/png/full/174-1747996_the-lord-of-the-rings-lord-of-the.png",
+      "https://www.seekpng.com/png/full/174-1747996_the-lord-of-the-rings-lord-of-the.png",
+      "https://www.seekpng.com/png/full/174-1747996_the-lord-of-the-rings-lord-of-the.png",
     ],
     manufactureID: [
       "kjadbkaj12",
@@ -44,7 +44,7 @@ List<Product> demoProducts = [
   Product(
     id: 2,
     images: [
-      "assets/images/book3.png",
+      "https://www.seekpng.com/png/full/174-1747996_the-lord-of-the-rings-lord-of-the.png",
     ],
     manufactureID: [
       "kjadbkaj12",
@@ -60,7 +60,7 @@ List<Product> demoProducts = [
   Product(
     id: 3,
     images: [
-      "assets/images/book3.png",
+      "https://www.seekpng.com/png/full/174-1747996_the-lord-of-the-rings-lord-of-the.png",
     ],
     manufactureID: [
       "kjadbkaj12",
@@ -76,7 +76,7 @@ List<Product> demoProducts = [
   Product(
     id: 4,
     images: [
-      "assets/images/book3.png",
+      "https://www.seekpng.com/png/full/174-1747996_the-lord-of-the-rings-lord-of-the.png",
     ],
     manufactureID: [
       "kjadbkaj12",

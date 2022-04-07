@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_api/main_screens/home_screen.dart';
 import 'package:login_api/models/cart.dart';
 import 'cart_card.dart';
 
@@ -17,6 +18,14 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back, color: Colors.white),
+            onPressed: () {
+              Route newRoute =
+              MaterialPageRoute(builder: (_) => HomeScreen());
+              Navigator.pushReplacement(context, newRoute);
+            },
+          ),
           title: Column(
             children: [
               const Text(
@@ -31,6 +40,7 @@ class _CartScreenState extends State<CartScreen> {
           ),
           centerTitle: true,
           automaticallyImplyLeading: false,
+
         ),
         body: Padding(
           padding:
@@ -45,6 +55,7 @@ class _CartScreenState extends State<CartScreen> {
                 onDismissed: (direction) {
                   setState(() {
                     demoCarts.removeAt(index);
+
                   });
                 },
                 background: Container(
@@ -126,7 +137,7 @@ class _CartScreenState extends State<CartScreen> {
                       child: TextButton(
                         style: TextButton.styleFrom(
                           backgroundColor: Colors.orange,
-                          primary: Colors.orange,
+                          primary: Colors.redAccent,
                         ),
                         child: Text("check out",
                           style: TextStyle(
